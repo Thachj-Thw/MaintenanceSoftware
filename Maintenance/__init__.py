@@ -23,7 +23,7 @@ class DiskPartition:
     ErrorMethodology: str
     HiddenSectors: str
     IdentifyingDescriptions: str
-    Index: int
+    Index: str
     InstallDate: str
     LastErrorCode: str
     MaxQuiesceTime: str
@@ -37,7 +37,7 @@ class DiskPartition:
     PrimaryPartition: str
     Purpose: str
     RewritePartition: str
-    Size: int
+    Size: str
     StartingOffset: str
     Status: str
     StatusInfo: str
@@ -46,38 +46,141 @@ class DiskPartition:
     TotalPowerOnHours: str
     Type: str
 
+    def get_size_GB(self) -> float:
+        return self.to_GB(int(self.Size))
+
     @staticmethod
     def to_GB(B: int) -> float:
         return round(B / 1024**3, 2)
 
 
+@dataclass
+class LogicalDisk:
+    Access: str
+    Availability: str
+    BlockSize: str
+    Caption: str
+    Compressed: str
+    ConfigManagerErrorCode: str
+    ConfigManagerUserConfig: str
+    CreationClassName: str
+    Description: str
+    DeviceID: str
+    DriveType: str
+    ErrorCleared: str
+    ErrorDescription: str
+    ErrorMethodology: str
+    FileSystem: str
+    FreeSpace: str
+    InstallDate: str
+    LastErrorCode: str
+    MaximumComponentLength: str
+    MediaType: str
+    Name: str
+    NumberOfBlocks: str
+    PNPDeviceID: str
+    PowerManagementCapabilities: str
+    PowerManagementSupported: str
+    ProviderName: str
+    Purpose: str
+    QuotasDisabled: str
+    QuotasIncomplete: str
+    QuotasRebuilding: str
+    Size: str
+    Status: str
+    StatusInfo: str
+    SupportsDiskQuotas: str
+    SupportsFileBasedCompression: str
+    SystemCreationClassName: str
+    SystemName: str
+    VolumeDirty: str
+    VolumeName: str
+    VolumeSerialNumber: str
+
+
+
+@dataclass
+class DiskDrive:
+    Availability: str
+    BytesPerSector: str
+    Capabilities: str
+    CapabilityDescriptions: str
+    Caption: str
+    CompressionMethod: str
+    ConfigManagerErrorCode: str
+    ConfigManagerUserConfig: str
+    CreationClassName: str
+    DefaultBlockSize: str
+    Description: str
+    DeviceID: str
+    ErrorCleared: str
+    ErrorDescription: str
+    ErrorMethodology: str
+    FirmwareRevision: str
+    Index: str
+    InstallDate: str
+    InterfaceType: str
+    LastErrorCode: str
+    Manufacturer: str
+    MaxBlockSize: str
+    MaxMediaSize: str
+    MediaLoaded: str
+    MediaType: str
+    MinBlockSize: str
+    Model: str
+    Name: str
+    NeedsCleaning: str
+    NumberOfMediaSupported: str
+    Partitions: str
+    PNPDeviceID: str
+    PowerManagementCapabilities: str
+    PowerManagementSupported: str
+    SCSIBus: str
+    SCSILogicalUnit: str
+    SCSIPort: str
+    SCSITargetId: str
+    SectorsPerTrack: str
+    SerialNumber: str
+    Signature: str
+    Size: str
+    Status: str
+    StatusInfo: str
+    SystemCreationClassName: str
+    SystemName: str
+    TotalCylinders: str
+    TotalHeads: str
+    TotalSectors: str
+    TotalTracks: str
+    TracksPerCylinder: str
+
+
+
 def Win32_DiskPartition():
-    result = []
-    p = subprocess.Popen("wmic path win32_diskpartition", stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    return __create_object_from_wmic(DiskPartition, "wmic path win32_diskpartition")
+
+
+def __create_object_from_wmic(obj: object, cmd: str):
+    obj_key = obj.__annotations__
+    keys = []
+    for key in obj_key:
+        keys.append(" " + key + " ")
+    p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     sources = p.communicate()[0].split(b"\r\r\n")[:-2]
-    keys = (
-        'Access', 'AdditionalAvailability', 'Availability', 'BlockSize', 'Bootable', 'BootPartition', 'Caption', 'ConfigManagerErrorCode', 
-        'ConfigManagerUserConfig', 'CreationClassName', 'Description', 'DeviceID', 'DiskIndex', 'ErrorCleared', 'ErrorDescription', 'ErrorMethodology',
-        'HiddenSectors', 'IdentifyingDescriptions', 'Index', 'InstallDate', 'LastErrorCode', 'MaxQuiesceTime', 'Name', 'NumberOfBlocks', 'OtherIdentifyingInfo',
-        'PNPDeviceID', 'PowerManagementCapabilities', 'PowerManagementSupported', 'PowerOnHours', 'PrimaryPartition', 'Purpose', 'RewritePartition', 'Size',
-        'StartingOffset', 'Status', 'StatusInfo', 'SystemCreationClassName', 'SystemName', 'TotalPowerOnHours', 'Type'
-    )
-    head = sources[0].decode()
+    head = " " + sources[0].decode()
     index_value = []
-    index = 0
     for key in keys:
         index = head.find(key)
+        if index == 1:
+            index -= 1
         index_value.append(index)
-        if index == -1:
-            print(key)
-    print(head)
-    print(index_value)
+    number_args = len(index_value)
+    result = []
+    for source in sources[1:]:
+        values = source.decode()
+        value = ["" for _ in range(number_args)]
+        for i, idx in enumerate(index_value):
+            if idx >= 0:
+                v = values[idx: values.find("  ", idx)]
+                value[i] = v
+        result.append(obj(*value))
     return result
-    # for source in sources:
-    #     result.append(DiskDrive(source.decode()))
-    # return result
-
-
-class LogicalDisk:
-    def __init__(self, source):
-        pass
