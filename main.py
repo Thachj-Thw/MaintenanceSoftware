@@ -1,4 +1,6 @@
-import Maintenance
+from Maintenance import clean
 
 
-print(Maintenance.Win32_DiskPartition())
+for out in clean.clean_prefetch():
+    print(out.filepath)
+    print(out.message)
