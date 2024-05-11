@@ -1,6 +1,5 @@
 from Maintenance import clean
 
 
-for out in clean.clean_prefetch():
-    print(out.filepath)
-    print(out.message)
+for f in clean.clean_temp():
+    print(f.filepath, f.size, f.message)

@@ -2,173 +2,202 @@ import subprocess
 from dataclasses import dataclass
 
 
+
 @dataclass
-class DiskPartition:
-    Access: str
-    AdditionalAvailability: str
-    Availability: str
-    BlockSize: str
-    Bootable: str
-    BootPartition: str
+class Win32_DiskPartition:
+    AdditionalAvailability: int
+    Availability: int
+    PowerManagementCapabilities: list[int]
+    IdentifyingDescriptions: str
+    MaxQuiesceTime: int
+    OtherIdentifyingInfo: int
+    StatusInfo: int
+    PowerOnHours: int
+    TotalPowerOnHours: int
+    Access: int
+    BlockSize: int
+    Bootable: bool
+    BootPartition: bool
     Caption: str
-    ConfigManagerErrorCode: str
-    ConfigManagerUserConfig: str
+    ConfigManagerErrorCode: int
+    ConfigManagerUserConfig: bool
     CreationClassName: str
     Description: str
     DeviceID: str
-    DiskIndex: str
-    ErrorCleared: str
+    DiskIndex: int
+    ErrorCleared: bool
     ErrorDescription: str
     ErrorMethodology: str
-    HiddenSectors: str
-    IdentifyingDescriptions: str
-    Index: str
+    HiddenSectors: int
+    Index: int
     InstallDate: str
-    LastErrorCode: str
-    MaxQuiesceTime: str
+    LastErrorCode: int
     Name: str
-    NumberOfBlocks: str
-    OtherIdentifyingInfo: str
+    NumberOfBlocks: int
     PNPDeviceID: str
-    PowerManagementCapabilities: str
-    PowerManagementSupported: str
-    PowerOnHours: str
-    PrimaryPartition: str
+    PowerManagementSupported: bool
+    PrimaryPartition: bool
     Purpose: str
-    RewritePartition: str
-    Size: str
-    StartingOffset: str
+    RewritePartition: bool
+    Size: int
+    StartingOffset: int
     Status: str
-    StatusInfo: str
     SystemCreationClassName: str
     SystemName: str
-    TotalPowerOnHours: str
     Type: str
 
+
     def get_size_GB(self) -> float:
-        return to_GB(int(self.Size))
+        return to_GB(self.Size)
 
 
 @dataclass
-class LogicalDisk:
-    Access: str
-    Availability: str
-    BlockSize: str
+class Win32_LogicalDisk:
+    Access: int
+    Availability: int
+    BlockSize: int
     Caption: str
-    Compressed: str
-    ConfigManagerErrorCode: str
-    ConfigManagerUserConfig: str
+    Compressed: bool
+    ConfigManagerErrorCode: int
+    ConfigManagerUserConfig: bool
     CreationClassName: str
     Description: str
     DeviceID: str
-    DriveType: str
-    ErrorCleared: str
+    DriveType: int
+    ErrorCleared: bool
     ErrorDescription: str
     ErrorMethodology: str
     FileSystem: str
-    FreeSpace: str
+    FreeSpace: int
     InstallDate: str
-    LastErrorCode: str
-    MaximumComponentLength: str
-    MediaType: str
+    LastErrorCode: int
+    MaximumComponentLength: int
+    MediaTyp: int
     Name: str
-    NumberOfBlocks: str
+    NumberOfBlocks: int
     PNPDeviceID: str
-    PowerManagementCapabilities: str
-    PowerManagementSupported: str
+    PowerManagementCapabilities: list[int]
+    PowerManagementSupported: bool
     ProviderName: str
     Purpose: str
-    QuotasDisabled: str
-    QuotasIncomplete: str
-    QuotasRebuilding: str
-    Size: str
+    QuotasDisabled: bool
+    QuotasIncomplete: bool
+    QuotasRebuilding: bool
+    Size: int
     Status: str
-    StatusInfo: str
-    SupportsDiskQuotas: str
-    SupportsFileBasedCompression: str
+    StatusInfo: int
+    SupportsDiskQuotas: bool
+    SupportsFileBasedCompression: bool
     SystemCreationClassName: str
     SystemName: str
-    VolumeDirty: str
+    VolumeDirty: bool
     VolumeName: str
     VolumeSerialNumber: str
 
+
     def get_size_GB(self) -> float:
             return to_GB(int(self.Size))
+
 
 
 @dataclass
-class DiskDrive:
-    Availability: str
-    BytesPerSector: str
-    Capabilities: str
-    CapabilityDescriptions: str
+class Win32_DiskDrive:
+    Availability: int
+    BytesPerSector: int
+    Capabilities: list[int]
+    CapabilityDescriptions: list[str]
     Caption: str
     CompressionMethod: str
-    ConfigManagerErrorCode: str
-    ConfigManagerUserConfig: str
+    ConfigManagerErrorCode: int
+    ConfigManagerUserConfig: bool
     CreationClassName: str
-    DefaultBlockSize: str
+    DefaultBlockSize: int
     Description: str
     DeviceID: str
-    ErrorCleared: str
+    ErrorCleared: bool
     ErrorDescription: str
     ErrorMethodology: str
     FirmwareRevision: str
-    Index: str
+    Index: int
     InstallDate: str
     InterfaceType: str
-    LastErrorCode: str
+    LastErrorCode: int
     Manufacturer: str
-    MaxBlockSize: str
-    MaxMediaSize: str
-    MediaLoaded: str
+    MaxBlockSize: int
+    MaxMediaSize: int
+    MediaLoaded: bool
     MediaType: str
-    MinBlockSize: str
+    MinBlockSize: int
     Model: str
     Name: str
-    NeedsCleaning: str
-    NumberOfMediaSupported: str
-    Partitions: str
+    NeedsCleaning: bool
+    NumberOfMediaSupported: int
+    Partitions: int
     PNPDeviceID: str
-    PowerManagementCapabilities: str
-    PowerManagementSupported: str
-    SCSIBus: str
-    SCSILogicalUnit: str
-    SCSIPort: str
-    SCSITargetId: str
-    SectorsPerTrack: str
+    PowerManagementCapabilities: list[int]
+    PowerManagementSupported: bool
+    SCSIBus: int
+    SCSILogicalUnit: int
+    SCSIPort: int
+    SCSITargetId: int
+    SectorsPerTrack: int
     SerialNumber: str
-    Signature: str
-    Size: str
+    Signature: int
+    Size: int
     Status: str
-    StatusInfo: str
+    StatusInfo: int
     SystemCreationClassName: str
     SystemName: str
-    TotalCylinders: str
-    TotalHeads: str
-    TotalSectors: str
-    TotalTracks: str
-    TracksPerCylinder: str
+    TotalCylinders: int
+    TotalHeads: int
+    TotalSectors: int
+    TotalTracks: int
+    TracksPerCylinder: int
 
     def get_size_GB(self) -> float:
             return to_GB(int(self.Size))
 
 
-def Win32_DiskPartition():
-    return __create_object_from_wmic(DiskPartition, "wmic path win32_diskpartition")
+def diskpartition() -> list[Win32_DiskPartition]:
+    return __create_object_from_wmic(Win32_DiskPartition, "wmic path win32_diskpartition")
 
 
-def Win32_LogicalDisk():
-    return __create_object_from_wmic(LogicalDisk, "wmic logicaldisk")
+def logicaldisk() -> list[Win32_LogicalDisk]:
+    return __create_object_from_wmic(Win32_LogicalDisk, "wmic logicaldisk")
 
 
-def Win32_DiskDrive():
-    return __create_object_from_wmic(DiskDrive, "wmic diskdrive")
-
+def diskdrive() -> list[Win32_DiskDrive]:
+    return __create_object_from_wmic(Win32_DiskDrive, "wmic diskdrive")
 
 
 def to_GB(B: int) -> float:
     return round(B / 1024**3, 2)
+
+
+def __to_bool(value: str) -> (bool | None):
+    if value == "TRUE":
+        return True
+    if value == "FALSE":
+        return False
+    return None
+
+
+def __to_int(value: str) -> (int | None):
+    if value.isnumeric():
+        return int(value)
+    return None
+
+
+def __to_list_int(value: str) -> list[int]:
+    if value:
+        return [int(x) for x in value[1:-1].split(", ")]
+    return []
+
+
+def __to_list_str(value: str) -> list[str]:
+    if value:
+        return [x[1:-1] for x in value[1:-1].split(", ")]
+    return []
 
 
 def __create_object_from_wmic(obj: object, cmd: str):
@@ -193,6 +222,15 @@ def __create_object_from_wmic(obj: object, cmd: str):
         for i, idx in enumerate(index_value):
             if idx >= 0:
                 v = values[idx: values.find("  ", idx)]
+                value_type = obj_key[keys[i][1:-1]]
+                if  value_type is int:
+                    v = __to_int(v)
+                elif value_type is bool:
+                    v = __to_bool(v)
+                elif value_type == list[int]:
+                    v = __to_list_int(v)
+                elif value_type == list[str]:
+                    v = __to_list_str(v)
                 value[i] = v
         result.append(obj(*value))
     return result
