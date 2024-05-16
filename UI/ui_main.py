@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainKTTiTL.ui'
+## Form generated from reading UI file 'maincYXXly.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.0
 ##
@@ -18,7 +18,6 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
     QMainWindow, QPushButton, QScrollArea, QSizePolicy,
     QStackedWidget, QTextEdit, QVBoxLayout, QWidget)
-
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -62,7 +61,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7.addWidget(self.pushButton_6)
 
 
-        self.horizontalLayout_6.addWidget(self.frame_7)
+        self.horizontalLayout_6.addWidget(self.frame_7, 0, Qt.AlignmentFlag.AlignRight)
 
 
         self.verticalLayout.addWidget(self.title)
@@ -88,6 +87,11 @@ class Ui_MainWindow(object):
         self.btn_check.setObjectName(u"btn_check")
 
         self.verticalLayout_2.addWidget(self.btn_check)
+
+        self.btn_upgrade = QPushButton(self.frame)
+        self.btn_upgrade.setObjectName(u"btn_upgrade")
+
+        self.verticalLayout_2.addWidget(self.btn_upgrade)
 
 
         self.horizontalLayout_2.addWidget(self.frame, 0, Qt.AlignmentFlag.AlignTop)
@@ -132,7 +136,9 @@ class Ui_MainWindow(object):
         self.frame_5.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_5.setFrameShadow(QFrame.Shadow.Raised)
         self.verticalLayout_5 = QVBoxLayout(self.frame_5)
+        self.verticalLayout_5.setSpacing(0)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.label = QLabel(self.frame_5)
         self.label.setObjectName(u"label")
 
@@ -146,9 +152,12 @@ class Ui_MainWindow(object):
         self.frame_6.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_6.setFrameShadow(QFrame.Shadow.Raised)
         self.verticalLayout_6 = QVBoxLayout(self.frame_6)
+        self.verticalLayout_6.setSpacing(0)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
         self.text_output = QTextEdit(self.frame_6)
         self.text_output.setObjectName(u"text_output")
+        self.text_output.setReadOnly(True)
 
         self.verticalLayout_6.addWidget(self.text_output)
 
@@ -159,24 +168,53 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.addWidget(self.frame_4)
 
         self.stackedWidget.addWidget(self.clean)
+        self.upgrade = QWidget()
+        self.upgrade.setObjectName(u"upgrade")
+        self.verticalLayout_7 = QVBoxLayout(self.upgrade)
+        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.label_3 = QLabel(self.upgrade)
+        self.label_3.setObjectName(u"label_3")
+        self.label_3.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.verticalLayout_7.addWidget(self.label_3)
+
+        self.stackedWidget.addWidget(self.upgrade)
         self.disk_status = QWidget()
         self.disk_status.setObjectName(u"disk_status")
         self.verticalLayout_10 = QVBoxLayout(self.disk_status)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
+        self.frame_9 = QFrame(self.disk_status)
+        self.frame_9.setObjectName(u"frame_9")
+        self.frame_9.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_9.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_3 = QHBoxLayout(self.frame_9)
+        self.horizontalLayout_3.setSpacing(0)
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.btn_refresh = QPushButton(self.frame_9)
+        self.btn_refresh.setObjectName(u"btn_refresh")
+
+        self.horizontalLayout_3.addWidget(self.btn_refresh)
+
+
+        self.verticalLayout_10.addWidget(self.frame_9, 0, Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignBottom)
+
         self.scrollArea = QScrollArea(self.disk_status)
         self.scrollArea.setObjectName(u"scrollArea")
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 554, 468))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 526, 436))
         self.verticalLayout_11 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_11.setObjectName(u"verticalLayout_11")
-        self.frame_9 = QFrame(self.scrollAreaWidgetContents)
-        self.frame_9.setObjectName(u"frame_9")
-        self.frame_9.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_9.setFrameShadow(QFrame.Shadow.Raised)
+        self.disk_info_area = QFrame(self.scrollAreaWidgetContents)
+        self.disk_info_area.setObjectName(u"disk_info_area")
+        self.disk_info_area.setFrameShape(QFrame.Shape.StyledPanel)
+        self.disk_info_area.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_area = QVBoxLayout(self.disk_info_area)
+        self.verticalLayout_area.setObjectName(u"verticalLayout_area")
 
-        self.verticalLayout_11.addWidget(self.frame_9)
+        self.verticalLayout_11.addWidget(self.disk_info_area, 0, Qt.AlignmentFlag.AlignTop)
 
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
 
@@ -207,7 +245,10 @@ class Ui_MainWindow(object):
         self.pushButton_6.setText("")
         self.btn_clean.setText(QCoreApplication.translate("MainWindow", u"D\u1ecdn r\u00e1c", None))
         self.btn_check.setText(QCoreApplication.translate("MainWindow", u"Ki\u1ec3m tra \u1ed5 c\u1ee9ng", None))
-        self.btn_start_clean.setText(QCoreApplication.translate("MainWindow", u"D\u1ecdn R\u00e1c", None))
+        self.btn_upgrade.setText(QCoreApplication.translate("MainWindow", u"N\u00e2ng c\u1ea5p ph\u1ea7n m\u1ec1m", None))
+        self.btn_start_clean.setText(QCoreApplication.translate("MainWindow", u"B\u1eaft \u0110\u1ea7u D\u1ecdn R\u00e1c", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"\u0110\u1ea7u ra", None))
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"Coming soon", None))
+        self.btn_refresh.setText(QCoreApplication.translate("MainWindow", u"L\u00e0m m\u1edbi", None))
     # retranslateUi
 

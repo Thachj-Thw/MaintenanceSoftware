@@ -31,7 +31,7 @@
          </property>
         </widget>
        </item>
-       <item>
+       <item alignment="Qt::AlignmentFlag::AlignRight">
         <widget class="QFrame" name="frame_7">
          <property name="frameShape">
           <enum>QFrame::Shape::StyledPanel</enum>
@@ -99,6 +99,13 @@
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QPushButton" name="btn_upgrade">
+            <property name="text">
+             <string>Nâng cấp phần mềm</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
@@ -130,7 +137,7 @@
                  <item>
                   <widget class="QPushButton" name="btn_start_clean">
                    <property name="text">
-                    <string>Dọn Rác</string>
+                    <string>Bắt Đầu Dọn Rác</string>
                    </property>
                   </widget>
                  </item>
@@ -158,6 +165,21 @@
                  <enum>QFrame::Shadow::Raised</enum>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_5">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
                  <item>
                   <widget class="QLabel" name="label">
                    <property name="text">
@@ -177,8 +199,27 @@
                  <enum>QFrame::Shadow::Raised</enum>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_6">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
                  <item>
-                  <widget class="QTextEdit" name="text_output"/>
+                  <widget class="QTextEdit" name="text_output">
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
                  </item>
                 </layout>
                </widget>
@@ -188,8 +229,56 @@
            </item>
           </layout>
          </widget>
+         <widget class="QWidget" name="upgrade">
+          <layout class="QVBoxLayout" name="verticalLayout_7">
+           <item>
+            <widget class="QLabel" name="label_3">
+             <property name="text">
+              <string>Coming soon</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignmentFlag::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
          <widget class="QWidget" name="disk_status">
           <layout class="QVBoxLayout" name="verticalLayout_10">
+           <item alignment="Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignBottom">
+            <widget class="QFrame" name="frame_9">
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QPushButton" name="btn_refresh">
+                <property name="text">
+                 <string>Làm mới</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
            <item>
             <widget class="QScrollArea" name="scrollArea">
              <property name="widgetResizable">
@@ -200,19 +289,20 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>554</width>
-                <height>468</height>
+                <width>526</width>
+                <height>436</height>
                </rect>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_11">
-               <item>
-                <widget class="QFrame" name="frame_9">
+               <item alignment="Qt::AlignmentFlag::AlignTop">
+                <widget class="QFrame" name="disk_info_area">
                  <property name="frameShape">
                   <enum>QFrame::Shape::StyledPanel</enum>
                  </property>
                  <property name="frameShadow">
                   <enum>QFrame::Shadow::Raised</enum>
                  </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_area"/>
                 </widget>
                </item>
               </layout>

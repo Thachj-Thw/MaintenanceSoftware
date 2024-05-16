@@ -47,10 +47,6 @@ class Win32_DiskPartition:
     Type: str
 
 
-    def get_size_GB(self) -> float:
-        return to_GB(self.Size)
-
-
 @dataclass
 class Win32_LogicalDisk:
     Access: int
@@ -93,10 +89,6 @@ class Win32_LogicalDisk:
     VolumeDirty: bool
     VolumeName: str
     VolumeSerialNumber: str
-
-
-    def get_size_GB(self) -> float:
-            return to_GB(int(self.Size))
 
 
 
@@ -154,24 +146,39 @@ class Win32_DiskDrive:
     TotalTracks: int
     TracksPerCylinder: int
 
-    def get_size_GB(self) -> float:
-            return to_GB(int(self.Size))
+
+@dataclass
+class Win32_LogicalDiskToPartition():
+    EndingAddress: int
+    StartingAddress: int
+    Antecedent: str
+    Dependent: str
 
 
-def diskpartition() -> list[Win32_DiskPartition]:
+@dataclass
+class Win32_DiskDriveToDiskPartition():
+    Antecedent: str
+    Dependent: str
+
+
+def disk_partition() -> list[Win32_DiskPartition]:
     return __create_object_from_wmic(Win32_DiskPartition, "wmic path win32_diskpartition")
 
 
-def logicaldisk() -> list[Win32_LogicalDisk]:
+def logical_disk() -> list[Win32_LogicalDisk]:
     return __create_object_from_wmic(Win32_LogicalDisk, "wmic logicaldisk")
 
 
-def diskdrive() -> list[Win32_DiskDrive]:
+def disk_drive() -> list[Win32_DiskDrive]:
     return __create_object_from_wmic(Win32_DiskDrive, "wmic diskdrive")
 
 
-def to_GB(B: int) -> float:
-    return round(B / 1024**3, 2)
+def logical_disk_to_partition() -> list[Win32_LogicalDiskToPartition]:
+    return __create_object_from_wmic(Win32_LogicalDiskToPartition, "wmic path Win32_LogicalDiskToPartition")
+
+
+def disk_drive_to_partition() -> list[Win32_DiskDriveToDiskPartition]:
+    return __create_object_from_wmic(Win32_DiskDriveToDiskPartition, "wmic path Win32_DiskDriveToDiskPartition")
 
 
 def __to_bool(value: str) -> (bool | None):
@@ -217,7 +224,7 @@ def __create_object_from_wmic(obj: object, cmd: str):
     number_args = len(index_value)
     result = []
     for source in sources[1:]:
-        values = source.decode()
+        values = source.decode().replace("?", "??")
         value = ["" for _ in range(number_args)]
         for i, idx in enumerate(index_value):
             if idx >= 0:
