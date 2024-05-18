@@ -1,0 +1,16 @@
+[Setup]
+Converter = PyInstaller
+AppName = "MaintenanceSoftware"
+InputFile = *ThisDir*\src\main.py
+OutputDir = *ThisDir*\Download
+Icon = NONE
+
+[Option]
+one-file
+#no-console
+uac-admin
+
+[Data]
+
+
+[Pathex]
