@@ -35,11 +35,12 @@ class TitleBar(QMainWindow):
         btn_close: QPushButton = None,
         frame_btns: QFrame = None,
         layout_shadow: QLayout = None,
-        size_up: QFrame = None,
+        size_top: QFrame = None,
+        size_top_left: QFrame = None,
         size_right: QFrame = None,
-        size_right_down: QFrame = None,
-        size_down: QFrame = None,
-        size_left_down: QFrame = None,
+        size_right_bottom: QFrame = None,
+        size_bottom: QFrame = None,
+        size_left_bottom: QFrame = None,
         size_left: QFrame = None
     ):
         self._main = frame_main
@@ -51,7 +52,6 @@ class TitleBar(QMainWindow):
         self._l_shadow = layout_shadow
         self.setWindowFlag(Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
-        self._min_size = QPoint(300, 100)
         if self._main:
             self._main.setGraphicsEffect(
                 QGraphicsDropShadowEffect(blurRadius=15, offset=QPoint(3, 3), color=QColor("#000")))
@@ -97,52 +97,53 @@ class TitleBar(QMainWindow):
             self._move.mouseReleaseEvent = release_window
         self.mousePressEvent = lambda event: TitleBar.update_pos(self, event.globalPos())
 
-        def size_move_up(event):
+        def size_move_top(event):
             if event.buttons() == Qt.MouseButton.LeftButton:
                 y = event.globalPos().y()
                 height = self.y() - y + self.height()
-                if height > self._min_size.y():
-                    self.move(self.x(), y)
-                    self.setFixedHeight(height)
+                if height > self.minimumHeight():
+                    self.setGeometry(self.x(), y, self.width(), height)
         
         def size_move_right(event):
             if event.buttons() == Qt.MouseButton.LeftButton:
                 width = event.globalPos().x() - self.x()
-                if width > self._min_size.x():
-                    self.setFixedWidth(width)
+                if width > self.minimumWidth():
+                    self.resize(width, self.height())
         
-        def size_move_down(event):
+        def size_move_bottom(event):
             if event.buttons() == Qt.MouseButton.LeftButton:
                 height = event.globalPos().y() - self.y()
-                if height > self._min_size.y():
-                    self.setFixedHeight(height)
+                if height > self.minimumHeight():
+                    self.resize(self.width(), height)
 
         def size_move_left(event):
             if event.buttons() == Qt.MouseButton.LeftButton:
                 x = event.globalPos().x()
                 width = self.x() - x + self.width()
-                if width > self._min_size.x():
-                    self.move(x, self.y())
-                    self.setFixedWidth(width)
+                if width > self.minimumWidth():
+                    self.setGeometry(x, self.y(), width, self.height())
 
-        if size_up:
-            size_up.setCursor(Qt.CursorShape.SizeVerCursor)
-            size_up.mouseMoveEvent = size_move_up
+        if size_top:
+            size_top.setCursor(Qt.CursorShape.SizeVerCursor)
+            size_top.mouseMoveEvent = size_move_top
 
         if size_right:
             size_right.setCursor(Qt.CursorShape.SizeHorCursor)
             size_right.mouseMoveEvent = size_move_right
 
-        if size_down:
-            size_down.setCursor(Qt.CursorShape.SizeVerCursor)
-            size_down.mouseMoveEvent = size_move_down
+        if size_bottom:
+            size_bottom.setCursor(Qt.CursorShape.SizeVerCursor)
+            size_bottom.mouseMoveEvent = size_move_bottom
 
         if size_left:
             size_left.setCursor(Qt.CursorShape.SizeHorCursor)
             size_left.mouseMoveEvent = size_move_left
 
-        if size_right_down:
-            QSizeGrip(size_right_down)
+        if size_right_bottom:
+            QSizeGrip(size_right_bottom)
         
-        if size_left_down:
-            QSizeGrip(size_left_down)
+        if size_left_bottom:
+            QSizeGrip(size_left_bottom)
+        
+        if size_top_left:
+            QSizeGrip(size_top_left)

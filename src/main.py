@@ -30,7 +30,7 @@ class Main(QMainWindow, Ui_MainWindow):
         self.label_version.setText("Version " + __version__)
         TitleBar.setup(self, self.title, self.frame_title, 
                        self.btn_min, self.btn_max, self.btn_exit, self.frame_btn, None,
-                       self.size_up, self.size_right, self.size_right_down, self.size_down, self.size_left_down, self.size_left)
+                       self.size_up, self.size_up_left, self.size_right, self.size_right_down, self.size_down, self.size_left_down, self.size_left)
 
         self.btn_clean.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.clean))
         self.btn_check.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.disk_status))

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainOOPlup.ui'
+## Form generated from reading UI file 'mainbwMhkZ.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.0
 ##
@@ -25,7 +25,8 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(929, 596)
+        MainWindow.setEnabled(True)
+        MainWindow.resize(836, 539)
         MainWindow.setStyleSheet(u"QWidget {\n"
 "	background-color: transparent;\n"
 "	font-size: 16px;\n"
@@ -46,6 +47,12 @@ class Ui_MainWindow(object):
 "	border-radius: 5px;\n"
 "	padding: 12px;\n"
 "	font-size: 15px\n"
+"}\n"
+"\n"
+"\n"
+"QPushButton:disabled {\n"
+"	color: #cccbd4;\n"
+"	background-color: #413b6e;\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -77,12 +84,12 @@ class Ui_MainWindow(object):
 "    background: #4e4a4f;\n"
 "}\n"
 "\n"
-"QScrollBar::add-line:vertical {\n"
+"QScrollBar::a"
+                        "dd-line:vertical {\n"
 "    border: none;\n"
 "    background: transparent;\n"
 "    width: 0px;\n"
-""
-                        "    height: 0px;\n"
+"    height: 0px;\n"
 "    subcontrol-position: top;\n"
 "    subcontrol-origin: margin;\n"
 "}\n"
@@ -123,14 +130,14 @@ class Ui_MainWindow(object):
 "	border-radius: 6px;\n"
 "	margin-top: 3ex;\n"
 "	font-weight: bold;\n"
-"	padding-top: 12px;\n"
+""
+                        "	padding-top: 12px;\n"
 "}\n"
 "\n"
 "QCheckBox {\n"
 "	color: #b5a4d4;\n"
 "	padding-bottom: 8px;\n"
-""
-                        "}\n"
+"}\n"
 "\n"
 "QCheckBox::indicator {\n"
 "	width: 30px;\n"
@@ -173,21 +180,22 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "#label_title {\n"
-"	font-size: 21px;\n"
+"	padding: 0px;\n"
+"	font-size: 20px;\n"
 "	font-weight: bold;\n"
 "}\n"
 "\n"
 "#btn_exit, #btn_max, #btn_min {\n"
 "	background-color: transparent;\n"
 "	border: none;\n"
-"	border-radius: none;\n"
+"	border-radius: no"
+                        "ne;\n"
 "	width: 30px;\n"
 "	height: 20px;\n"
 "	padding: 0.2em 0.5em 0.2em 0.5em;\n"
 "}\n"
 "\n"
-"#btn_max:hover, #btn_m"
-                        "in:hover {\n"
+"#btn_max:hover, #btn_min:hover {\n"
 "	background-color: #292929;\n"
 "}\n"
 "\n"
@@ -241,14 +249,44 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.setSpacing(0)
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
         self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
-        self.size_up = QFrame(self.frame_title)
+        self.frame_up_left = QFrame(self.frame_title)
+        self.frame_up_left.setObjectName(u"frame_up_left")
+        self.frame_up_left.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_up_left.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_9 = QHBoxLayout(self.frame_up_left)
+        self.horizontalLayout_9.setSpacing(0)
+        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.horizontalLayout_9.setContentsMargins(0, 0, 0, 0)
+        self.size_up_left = QFrame(self.frame_up_left)
+        self.size_up_left.setObjectName(u"size_up_left")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.size_up_left.sizePolicy().hasHeightForWidth())
+        self.size_up_left.setSizePolicy(sizePolicy1)
+        self.size_up_left.setMinimumSize(QSize(5, 5))
+        self.size_up_left.setMaximumSize(QSize(5, 5))
+        self.size_up_left.setFrameShape(QFrame.Shape.StyledPanel)
+        self.size_up_left.setFrameShadow(QFrame.Shadow.Raised)
+
+        self.horizontalLayout_9.addWidget(self.size_up_left)
+
+        self.size_up = QFrame(self.frame_up_left)
         self.size_up.setObjectName(u"size_up")
-        self.size_up.setMinimumSize(QSize(1, 2))
-        self.size_up.setMaximumSize(QSize(16777215, 2))
+        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.size_up.sizePolicy().hasHeightForWidth())
+        self.size_up.setSizePolicy(sizePolicy2)
+        self.size_up.setMinimumSize(QSize(5, 5))
+        self.size_up.setMaximumSize(QSize(16777215, 5))
         self.size_up.setFrameShape(QFrame.Shape.StyledPanel)
         self.size_up.setFrameShadow(QFrame.Shadow.Raised)
 
-        self.verticalLayout_9.addWidget(self.size_up)
+        self.horizontalLayout_9.addWidget(self.size_up)
+
+
+        self.verticalLayout_9.addWidget(self.frame_up_left)
 
         self.label_title = QLabel(self.frame_title)
         self.label_title.setObjectName(u"label_title")
@@ -282,18 +320,18 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7.addWidget(self.btn_exit)
 
 
-        self.horizontalLayout_6.addWidget(self.frame_btn, 0, Qt.AlignmentFlag.AlignRight)
+        self.horizontalLayout_6.addWidget(self.frame_btn, 0, Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTop)
 
 
         self.verticalLayout.addWidget(self.title)
 
         self.size_left_right = QFrame(self.centralwidget)
         self.size_left_right.setObjectName(u"size_left_right")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.size_left_right.sizePolicy().hasHeightForWidth())
-        self.size_left_right.setSizePolicy(sizePolicy1)
+        sizePolicy3 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.size_left_right.sizePolicy().hasHeightForWidth())
+        self.size_left_right.setSizePolicy(sizePolicy3)
         self.size_left_right.setFrameShape(QFrame.Shape.StyledPanel)
         self.size_left_right.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_4 = QHBoxLayout(self.size_left_right)
@@ -302,11 +340,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.size_left = QFrame(self.size_left_right)
         self.size_left.setObjectName(u"size_left")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.size_left.sizePolicy().hasHeightForWidth())
-        self.size_left.setSizePolicy(sizePolicy2)
+        sizePolicy4 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.size_left.sizePolicy().hasHeightForWidth())
+        self.size_left.setSizePolicy(sizePolicy4)
         self.size_left.setMinimumSize(QSize(5, 5))
         self.size_left.setMaximumSize(QSize(5, 16777215))
         self.size_left.setFrameShape(QFrame.Shape.StyledPanel)
@@ -316,8 +354,8 @@ class Ui_MainWindow(object):
 
         self.frame_7 = QFrame(self.size_left_right)
         self.frame_7.setObjectName(u"frame_7")
-        sizePolicy1.setHeightForWidth(self.frame_7.sizePolicy().hasHeightForWidth())
-        self.frame_7.setSizePolicy(sizePolicy1)
+        sizePolicy3.setHeightForWidth(self.frame_7.sizePolicy().hasHeightForWidth())
+        self.frame_7.setSizePolicy(sizePolicy3)
         self.frame_7.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_7.setFrameShadow(QFrame.Shadow.Raised)
         self.verticalLayout_12 = QVBoxLayout(self.frame_7)
@@ -406,6 +444,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
         self.btn_start_clean = QPushButton(self.frame_8)
         self.btn_start_clean.setObjectName(u"btn_start_clean")
+        self.btn_start_clean.setEnabled(True)
+        self.btn_start_clean.setCheckable(False)
+        self.btn_start_clean.setAutoDefault(False)
 
         self.verticalLayout_8.addWidget(self.btn_start_clean)
 
@@ -558,7 +599,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 682, 465))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 67, 38))
         self.verticalLayout_11 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_11.setObjectName(u"verticalLayout_11")
         self.disk_info_area = QFrame(self.scrollAreaWidgetContents)
@@ -586,8 +627,8 @@ class Ui_MainWindow(object):
 
         self.size_right = QFrame(self.size_left_right)
         self.size_right.setObjectName(u"size_right")
-        sizePolicy2.setHeightForWidth(self.size_right.sizePolicy().hasHeightForWidth())
-        self.size_right.setSizePolicy(sizePolicy2)
+        sizePolicy4.setHeightForWidth(self.size_right.sizePolicy().hasHeightForWidth())
+        self.size_right.setSizePolicy(sizePolicy4)
         self.size_right.setMinimumSize(QSize(5, 5))
         self.size_right.setMaximumSize(QSize(5, 16777215))
         self.size_right.setFrameShape(QFrame.Shape.StyledPanel)
@@ -600,24 +641,21 @@ class Ui_MainWindow(object):
 
         self.size_bottom = QFrame(self.centralwidget)
         self.size_bottom.setObjectName(u"size_bottom")
-        sizePolicy3 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
-        sizePolicy3.setHorizontalStretch(0)
-        sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.size_bottom.sizePolicy().hasHeightForWidth())
-        self.size_bottom.setSizePolicy(sizePolicy3)
+        sizePolicy5 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
+        sizePolicy5.setHorizontalStretch(0)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.size_bottom.sizePolicy().hasHeightForWidth())
+        self.size_bottom.setSizePolicy(sizePolicy5)
         self.size_bottom.setFrameShape(QFrame.Shape.StyledPanel)
         self.size_bottom.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_5 = QHBoxLayout(self.size_bottom)
-        self.horizontalLayout_5.setSpacing(1)
+        self.horizontalLayout_5.setSpacing(0)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
         self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.size_left_down = QFrame(self.size_bottom)
         self.size_left_down.setObjectName(u"size_left_down")
-        sizePolicy4 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
-        sizePolicy4.setHorizontalStretch(0)
-        sizePolicy4.setVerticalStretch(0)
-        sizePolicy4.setHeightForWidth(self.size_left_down.sizePolicy().hasHeightForWidth())
-        self.size_left_down.setSizePolicy(sizePolicy4)
+        sizePolicy1.setHeightForWidth(self.size_left_down.sizePolicy().hasHeightForWidth())
+        self.size_left_down.setSizePolicy(sizePolicy1)
         self.size_left_down.setMinimumSize(QSize(5, 5))
         self.size_left_down.setMaximumSize(QSize(5, 5))
         self.size_left_down.setFrameShape(QFrame.Shape.StyledPanel)
@@ -627,11 +665,8 @@ class Ui_MainWindow(object):
 
         self.size_down = QFrame(self.size_bottom)
         self.size_down.setObjectName(u"size_down")
-        sizePolicy5 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-        sizePolicy5.setHorizontalStretch(0)
-        sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.size_down.sizePolicy().hasHeightForWidth())
-        self.size_down.setSizePolicy(sizePolicy5)
+        sizePolicy2.setHeightForWidth(self.size_down.sizePolicy().hasHeightForWidth())
+        self.size_down.setSizePolicy(sizePolicy2)
         self.size_down.setMinimumSize(QSize(5, 5))
         self.size_down.setMaximumSize(QSize(16777215, 5))
         self.size_down.setFrameShape(QFrame.Shape.StyledPanel)
@@ -641,8 +676,8 @@ class Ui_MainWindow(object):
 
         self.size_right_down = QFrame(self.size_bottom)
         self.size_right_down.setObjectName(u"size_right_down")
-        sizePolicy4.setHeightForWidth(self.size_right_down.sizePolicy().hasHeightForWidth())
-        self.size_right_down.setSizePolicy(sizePolicy4)
+        sizePolicy1.setHeightForWidth(self.size_right_down.sizePolicy().hasHeightForWidth())
+        self.size_right_down.setSizePolicy(sizePolicy1)
         self.size_right_down.setMinimumSize(QSize(5, 5))
         self.size_right_down.setMaximumSize(QSize(5, 5))
         self.size_right_down.setFrameShape(QFrame.Shape.StyledPanel)

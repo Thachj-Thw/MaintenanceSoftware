@@ -2,12 +2,15 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>929</width>
-    <height>596</height>
+    <width>836</width>
+    <height>539</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -34,6 +37,12 @@ QPushButton {
 	border-radius: 5px;
 	padding: 12px;
 	font-size: 15px
+}
+
+
+QPushButton:disabled {
+	color: #cccbd4;
+	background-color: #413b6e;
 }
 
 QPushButton:hover {
@@ -159,7 +168,8 @@ QLineEdit {
 }
 
 #label_title {
-	font-size: 21px;
+	padding: 0px;
+	font-size: 20px;
 	font-weight: bold;
 }
 
@@ -272,25 +282,86 @@ QLineEdit {
            <number>0</number>
           </property>
           <item>
-           <widget class="QFrame" name="size_up">
-            <property name="minimumSize">
-             <size>
-              <width>1</width>
-              <height>2</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>2</height>
-             </size>
-            </property>
+           <widget class="QFrame" name="frame_up_left">
             <property name="frameShape">
              <enum>QFrame::Shape::StyledPanel</enum>
             </property>
             <property name="frameShadow">
              <enum>QFrame::Shadow::Raised</enum>
             </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_9">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QFrame" name="size_up_left">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>5</width>
+                 <height>5</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>5</width>
+                 <height>5</height>
+                </size>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::Shape::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Raised</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="size_up">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>5</width>
+                 <height>5</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>5</height>
+                </size>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::Shape::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Shadow::Raised</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </widget>
           </item>
           <item>
@@ -303,7 +374,7 @@ QLineEdit {
          </layout>
         </widget>
        </item>
-       <item alignment="Qt::AlignmentFlag::AlignRight">
+       <item alignment="Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTop">
         <widget class="QFrame" name="frame_btn">
          <property name="frameShape">
           <enum>QFrame::Shape::StyledPanel</enum>
@@ -588,8 +659,17 @@ QLineEdit {
                       <layout class="QVBoxLayout" name="verticalLayout_8">
                        <item>
                         <widget class="QPushButton" name="btn_start_clean">
+                         <property name="enabled">
+                          <bool>true</bool>
+                         </property>
                          <property name="text">
                           <string>Bắt Đầu Dọn Rác</string>
+                         </property>
+                         <property name="checkable">
+                          <bool>false</bool>
+                         </property>
+                         <property name="autoDefault">
+                          <bool>false</bool>
                          </property>
                         </widget>
                        </item>
@@ -845,8 +925,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>682</width>
-                      <height>465</height>
+                      <width>67</width>
+                      <height>38</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -922,7 +1002,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_5">
        <property name="spacing">
-        <number>1</number>
+        <number>0</number>
        </property>
        <property name="leftMargin">
         <number>0</number>
@@ -1027,7 +1107,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
   </widget>
  </widget>
  <resources>
-  <include location="../../../App/ConvertPython/GUI/images/source.qrc"/>
+  <include location="source.qrc"/>
+  <include location="../../../../App/ConvertPython/GUI/images/source.qrc"/>
  </resources>
  <connections/>
 </ui>
