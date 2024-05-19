@@ -1,8 +1,8 @@
 [Setup]
 Converter = PyInstaller
 AppName = "MaintenanceSoftware"
-InputFile = D:\Information Technology\Python\Tools\MaintenanceSoftware\src\main.py
-OutputDir = D:\Information Technology\Python\Tools\MaintenanceSoftware\Download
+InputFile = *ThisDir*\src\main.py
+OutputDir = *ThisDir*\Download
 Icon = NONE
 
 [Option]
