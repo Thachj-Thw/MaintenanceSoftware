@@ -78,7 +78,10 @@ def detect_car_parking_folder() -> str:
     )
     shell = win32com.client.Dispatch("WScript.Shell")
     for name in all_name:
-        shortcut = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop', name)
-        if os.path.exists(shortcut):
-            return os.path.dirname(shell.CreateShortCut(shortcut).Targetpath)
+        shortcut1 = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop', name)
+        shortcut2 = os.path.join('C:', os.sep, 'Users', 'Public', 'Desktop', name)
+        if os.path.exists(shortcut1):
+            return os.path.dirname(shell.CreateShortCut(shortcut1).Targetpath)
+        if os.path.exists(shortcut2):
+            return os.path.dirname(shell.CreateShortCut(shortcut2).Targetpath)
     return ""

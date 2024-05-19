@@ -164,8 +164,6 @@ class WorkerClean(QThread):
 
 
 
-
-
 if __name__ == "__main__":
     module.hide_console()
     app = QApplication(sys.argv)

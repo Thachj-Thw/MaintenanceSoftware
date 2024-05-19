@@ -3,7 +3,8 @@ import os
 import tempfile
 from dataclasses import dataclass
 from typing import Generator, Any
-
+import ctypes
+from ctypes import windll
 
 
 @dataclass
@@ -26,8 +27,8 @@ def clean_prefetch() -> Generator[CleanStruct, Any, Any]:
 
 
 def clean_recent() -> Generator[CleanStruct, Any, Any]:
-    recent_dir = os.path.join(r"C:\Users", os.getlogin(), "Recent")
-    return __clean_dir(recent_dir)
+    windll.Shell32.SHAddToRecentDocs(1, "")
+    yield CleanStruct("Recent", "Recent", "", 0, True)
 
 
 def __total_size(folder: str) -> int:
@@ -80,15 +81,3 @@ def clean_backup_database(folder: str) -> Generator[CleanStruct, Any, Any]:
                 current = file
                 current_path = path
                 current_time = ctime
-
-import ctypes
-
-class disable_file_system_redirection:
-    _disable = ctypes.windll.kernel32.Wow64DisableWow64FsRedirection
-    _revert = ctypes.windll.kernel32.Wow64RevertWow64FsRedirection
-    def __enter__(self):
-        self.old_value = ctypes.c_long()
-        self.success = self._disable(ctypes.byref(self.old_value))
-    def __exit__(self, type, value, traceback):
-        if self.success:
-            self._revert(self.old_value)
