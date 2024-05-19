@@ -27,8 +27,13 @@ def clean_prefetch() -> Generator[CleanStruct, Any, Any]:
 
 
 def clean_recent() -> Generator[CleanStruct, Any, Any]:
-    windll.Shell32.SHAddToRecentDocs(1, "")
-    yield CleanStruct("Recent", "Recent", "", 0, True)
+    code = windll.Shell32.SHAddToRecentDocs(1, None)
+    if code == 0:
+        yield CleanStruct("Recent", "Recent", "", 0, True)
+    elif code < 0:
+        yield CleanStruct("Recent", "Recent", "Recent Folder is Empty", 0, False)
+    elif code > 0:
+        yield CleanStruct("Recent", "Recent", "Unknow Error, clear failed", 0, False)
 
 
 def __total_size(folder: str) -> int:
